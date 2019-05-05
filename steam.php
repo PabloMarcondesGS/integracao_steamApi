@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<!-- <meta charset="utf-8" /> -->
-	<!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
-	<!-- <title>Page Title</title> -->
-	<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
-	<link rel="stylesheet" type="text/css" media="screen" href="style.css" />
-</head>
-<body id="teste">
-<h1>Rola</h1>
-</body>
+	<head>
+		<link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+	</head>
+	<body id="teste">
+		<ul>
+			<li><a href="default.asp">Home</a></li>
+			<li><a href="news.asp">News</a></li>
+			<li><a href="contact.asp">Contact</a></li>
+			<li><a><form action="?login" method="post">
+    			<input type="image" src="http://cdn.steamcommunity.com/public/images/signinthroughsteam/sits_small.png" alling="center">
+			</form></a></li>
+		</ul>
+	</body>
 </html>
 
 <?php
@@ -18,7 +21,7 @@ $_STEAMAPI = "0043DE5DB0FF46B20A258CC0FA0AF578";
 try 
 {
 	// Usa OpenId para a integração do login.
-    $openid = new LightOpenID('http://localhost:8080/SteamIntegration/steam.php');
+    $openid = new LightOpenID('http://localhost:2122/SteamIntegration/steam.php');
     if(!$openid->mode) 
     {
         if(isset($_GET['login'])) 
@@ -28,9 +31,7 @@ try
             header('Location: ' . $openid->authUrl());
         }
 ?>
-<form action="?login" method="post">
-    <input type="image" src="http://cdn.steamcommunity.com/public/images/signinthroughsteam/sits_small.png">
-</form>
+
 <?php
     } 
     elseif($openid->mode == 'cancel') 
